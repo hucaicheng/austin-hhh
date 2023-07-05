@@ -13,6 +13,7 @@ public class AustinApplication {
          * 2、 讲application.properties配置文件的austin，Apollo.enabled 改为true
          * 3. 下方的property替换真实的ip和port
          */
+
         SpringApplication.run(AustinApplication.class,args);
     }
 }
