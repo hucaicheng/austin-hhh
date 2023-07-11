@@ -10,9 +10,9 @@
         <module name="austin-support" />
         <module name="austin-web" />
         <module name="austin-handler" />
+        <module name="austin-service-api" />
         <module name="austin-stream" />
         <module name="austin-cron" />
-        <module name="austin-service" />
         <module name="austin-common" />
         <module name="austin-service-impl" />
       </profile>
@@ -23,7 +23,7 @@
       <module name="austin-common" options="-parameters" />
       <module name="austin-cron" options="-parameters" />
       <module name="austin-handler" options="-parameters" />
-      <module name="austin-service" options="-parameters" />
+      <module name="austin-service-api" options="-parameters" />
       <module name="austin-service-impl" options="-parameters" />
       <module name="austin-stream" options="-parameters" />
       <module name="austin-support" options="-parameters" />
