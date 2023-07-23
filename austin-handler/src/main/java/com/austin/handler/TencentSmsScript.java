@@ -1,4 +1,4 @@
-package com.austin;
+package com.austin.handler;
 
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.profile.ClientProfile;
@@ -17,10 +17,11 @@ public class TencentSmsScript {
      *
      * @param phoneNumber 手机号
      * @param SmsSdkAppId 短信应用应用
-     * @param SignName 短信签名内容
+     * @param SignName 短信签名内容 (非必填)
      * @param TemplateId 短信模板id
+     *
      */
-    public static void sendTencentSmsScript(String phoneNumber, String SmsSdkAppId ,String SignName, String TemplateId){
+    public static void sendTencentSmsScript(String phoneNumber, String SmsSdkAppId ,String SignName, String TemplateId, String templateParamSet2){
         try{
             // 实例化一个认证对象，入参需要传入腾讯云账户 SecretId 和 SecretKey，此处还需注意密钥对的保密
             // 代码泄露可能会导致 SecretId 和 SecretKey 泄露，并威胁账号下所有资源的安全性。以下代码示例仅供参考，建议采用更安全的方式来使用密钥，请参见：https://cloud.tencent.com/document/product/1278/85305
@@ -36,12 +37,15 @@ public class TencentSmsScript {
             SmsClient client = new SmsClient(cred, "ap-beijing", clientProfile);
             // 实例化一个请求对象,每个接口都会对应一个request对象
             SendSmsRequest req = new SendSmsRequest();
-            String[] phoneNumberSet1 = {"18702515354"};
+            String[] phoneNumberSet1 = {phoneNumber};
             req.setPhoneNumberSet(phoneNumberSet1);
 
-            req.setSmsSdkAppId("1400836675");
-            req.setSignName("今年何夕08");
-            req.setTemplateId("1856652");
+            req.setSmsSdkAppId(SmsSdkAppId);
+            req.setSignName(SignName);
+            //验证码内容
+            String[] templateParamSet1 = {templateParamSet2};
+            req.setTemplateParamSet(templateParamSet1);
+            req.setTemplateId(TemplateId);
             // 返回的resp是一个SendSmsResponse的实例，与请求对象对应
             SendSmsResponse resp = client.SendSms(req);
             // 输出json格式的字符串回包
@@ -52,6 +56,6 @@ public class TencentSmsScript {
     }
 
     public static void main(String [] args) {
-        sendTencentSmsScript("18702515354","1400836675","今年何夕08","1856652");
+        sendTencentSmsScript("18702515354","1400836675","惊与啊","1856652","35261");
     }
 }

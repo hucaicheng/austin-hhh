@@ -129,7 +129,7 @@ public class MessageTemplate {
     /**
      * 是否删除：0.不删除 1.删除
      */
-    private int isDeleted;
+    private Integer isDeleted;
 
     /**
      * 创建时间

@@ -1,4 +1,4 @@
-package com.austin.domain;
+package com.austin.service.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

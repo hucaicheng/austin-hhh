@@ -1,5 +1,6 @@
-package com.austin.domain;
+package com.austin.service.domain;
 
+import com.austin.common.enums.RespStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -23,4 +24,8 @@ public class SendResponse {
      */
     private String msg;
 
+    public SendResponse(RespStatusEnum clientBadParameters) {
+        this.code = clientBadParameters.getCode();
+        this.msg = clientBadParameters.getMsg();
+    }
 }
