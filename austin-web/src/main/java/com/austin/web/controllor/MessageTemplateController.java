@@ -8,9 +8,10 @@ import com.austin.service.enums.BusinessCode;
 import com.austin.common.enums.RespStatusEnum;
 import com.austin.service.service.SendService;
 import io.swagger.annotations.Api;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.austin.web.vo.MessageTemplateParam;
@@ -33,7 +34,7 @@ public class MessageTemplateController {
     @Autowired
     private SendService sendService;
 
-    @RequestMapping("/send")
+    @PostMapping("/send")
     public SendResponse test(@RequestBody MessageTemplateParam messageTemplateParam){
         Map<String,String> variables = JSON.parseObject(messageTemplateParam.getMsgContent(),Map.class);
         //组装参数类型

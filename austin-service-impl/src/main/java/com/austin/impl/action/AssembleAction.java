@@ -87,7 +87,7 @@ public class AssembleAction implements BusinessProcess<SendTaskModel> {
     }
 
     /**
-     * 获取 contentModel，替换模板msgContent中占位符信息(暂时没看懂)
+     * 获取 contentModel，替换模板msgContent中占位符信息
      */
     private static ContentModel getContentModelValue(MessageTemplate messageTemplate, MessageParam messageParam) {
 
@@ -101,14 +101,16 @@ public class AssembleAction implements BusinessProcess<SendTaskModel> {
 
 
         // 通过反射 组装出 contentModel
-        Field[] fields = ReflectUtil.getFields(contentModelClass);
+        Field[] fields = ReflectUtil.getFields(contentModelClass);//将类信息放入field
         ContentModel contentModel = ReflectUtil.newInstance(contentModelClass);
         for (Field field : fields) {
-            String originValue = jsonObject.getString(field.getName());
+            String originValue = jsonObject.getString(field.getName());//获取字段名对应的数据
 
             if (StrUtil.isNotBlank(originValue)) {
+                // 替换占位符的内容
                 String resultValue = ContentHolderUtil.replacePlaceHolder(originValue, variables);
                 Object resultObj = JSONUtil.isJsonObj(resultValue) ? JSONUtil.toBean(resultValue, field.getType()) : resultValue;
+                // 将替换好的内容放入contentModel中
                 ReflectUtil.setFieldValue(contentModel, field, resultObj);
             }
         }

@@ -73,7 +73,7 @@ public class AfterParamCheckAction implements BusinessProcess<SendTaskModel> {
         while (iterator.hasNext()){
             TaskInfo task = iterator.next();
             Set<String> illegalPhone = task.getReceiver().stream().
-                    filter(phone -> ReUtil.isMatch(regexExp, phone))
+                    filter(phone -> !ReUtil.isMatch(regexExp, phone))
                     .collect(Collectors.toSet());
             if (CollUtil.isNotEmpty(illegalPhone)){
                 task.getReceiver().removeAll(illegalPhone);

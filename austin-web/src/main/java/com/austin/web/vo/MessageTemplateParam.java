@@ -1,5 +1,6 @@
 package com.austin.web.vo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,6 +33,7 @@ public class MessageTemplateParam {
     /**
      * 模板ID
      */
+    @JsonProperty(value = "id")
     private Long id;
 
     /**
