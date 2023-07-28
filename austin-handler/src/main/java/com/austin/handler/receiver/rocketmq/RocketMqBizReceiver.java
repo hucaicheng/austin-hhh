@@ -2,6 +2,7 @@ package com.austin.handler.receiver.rocketmq;
 
 import com.austin.support.constans.MessageQueuePipeline;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.annotation.SelectorType;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -36,6 +37,9 @@ public class RocketMqBizReceiver implements RocketMQListener<String> {
 
     @Override
     public void onMessage(String message) {
+        if (StringUtils.isBlank(message)) {
+            return;
+        }
         log.info("message: "+message);
     }
 }
