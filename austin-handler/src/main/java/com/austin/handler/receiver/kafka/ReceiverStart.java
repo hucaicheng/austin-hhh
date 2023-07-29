@@ -64,6 +64,7 @@ public class ReceiverStart {
     }
 
     /**
+     * 给Receiver 配置一个切面
      * 给每个Receiver对象的consumer方法 @KafkaListener赋值相应的groupId
      *
      *
