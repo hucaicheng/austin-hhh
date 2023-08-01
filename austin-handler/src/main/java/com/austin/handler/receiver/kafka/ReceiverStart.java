@@ -54,7 +54,9 @@ public class ReceiverStart {
      * 为每个渠道不同的消息类型 创建一个Receiver对象
      *
      * @PostConstruct: 是Java自带的注解，在方法上加该注解会在项目启动的时候执行该方法，
-     *                  也可以理解为在spring容器初始化的时候执行该方法。
+     *         使用场景: 当我们要完成对象中某些数据的初始化操作, 而执行这些操作又需要依赖注入的对象时, (例如当前的context必须完成依赖注入),
+     *              就可以使用当前的接口
+     *         生命周期: 1. 类构造方法, 2. 依赖注入完成 3. @PostConstruct
      */
     @PostConstruct
     public void init() {

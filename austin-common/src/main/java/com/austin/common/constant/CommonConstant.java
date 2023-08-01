@@ -80,4 +80,5 @@ public class CommonConstant {
     public final static String ENV_TEST = "test";
 
 
+    public static final Integer DEDUPLICATION_NEW_COUNT = 1;
 }

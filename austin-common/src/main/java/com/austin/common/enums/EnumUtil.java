@@ -1,7 +1,9 @@
 package com.austin.common.enums;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * @Author hucaicheng
@@ -21,5 +23,16 @@ public class EnumUtil {
         return Arrays.stream(enumClass.getEnumConstants())
                 .filter(e -> Objects.equals(e.getCode(),code))
                 .findFirst().orElse(null);
+    }
+
+    /**
+     * 获取当前枚举类的所有code
+     * @param enumClass
+     * @param <T>
+     * @return
+     */
+    public static <T extends PowerfulEnum> List<Integer> getCodeList(Class<T> enumClass) {
+        return Arrays.stream(enumClass.getEnumConstants())
+                .map(PowerfulEnum::getCode).collect(Collectors.toList());
     }
 }
