@@ -40,6 +40,7 @@ public class SimpleLimitService extends AbstractLimitService{
         List<String> keys = deduplicationSingleAllKey(service, taskInfo).stream().map(key -> LIMIT_TAG + key).collect(Collectors.toList());
         // 通过keys得到对应的value
         Map<String, String> values = redisUtils.mGet(keys);
+        // 由于要统计receiver, 所以必须遍历receiver
         for (String receiver : taskInfo.getReceiver()) {
             String key =LIMIT_TAG + deduplicationSingleKey(service,receiver,taskInfo);
             String value = values.get(key);// 对应着key的次数

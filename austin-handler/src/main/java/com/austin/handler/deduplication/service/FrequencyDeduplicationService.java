@@ -36,6 +36,8 @@ public class FrequencyDeduplicationService extends AbstractDeduplicationService{
     @Override
     public String deduplicationSingleKey(TaskInfo taskInfo, String receiver) {
         return PREFIX + StrUtil.C_UNDERLINE
-                + receiver + taskInfo.getMessageTemplateId() + taskInfo.getSendChannel();
+                + receiver + StrUtil.C_UNDERLINE
+                + taskInfo.getMessageTemplateId()+ StrUtil.C_UNDERLINE
+                + taskInfo.getSendChannel();
     }
 }

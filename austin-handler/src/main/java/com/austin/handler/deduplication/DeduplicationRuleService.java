@@ -23,7 +23,7 @@ public class DeduplicationRuleService {
     private DeduplicationHolder deduplicationHolder;
 
     /**
-     * 消息去重
+     * 消息去重入口
      * @param taskInfo
      */
     public void duplication(TaskInfo taskInfo){
