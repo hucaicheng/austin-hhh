@@ -8,6 +8,7 @@ import com.austin.handler.deduplication.DeduplicationParam;
 import com.austin.handler.deduplication.limit.LimitService;
 
 import com.austin.support.utils.LogUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -26,6 +27,7 @@ import java.util.Set;
  *  *      而如果是开头和结尾代码一样, 中间逻辑不一样, 那就将新增一个中间逻辑实现类, 然后注入不同的中间类来完成, 就可以去除重复代码(AbstractDeduplicationService)
  * @Author hcc
  */
+@Slf4j
 public abstract class AbstractDeduplicationService implements DeduplicationService{
 
     protected Integer deduplicationType;
@@ -49,6 +51,8 @@ public abstract class AbstractDeduplicationService implements DeduplicationServi
 
         // 剔除符合去重条件的用户
         if (CollUtil.isNotEmpty(filterReceiver)){
+            log.info("AbstractDeduplicationService.duplication--需要去重的接收者--:{}",filterReceiver);
+
             taskInfo.getReceiver().removeAll(filterReceiver);
             logUtils.print(AnchorInfo.builder().businessId(taskInfo.getBusinessId()).ids(filterReceiver).state(param.getAnchorState().getCode()).build());
         }

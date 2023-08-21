@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @function 去重功能的工具管理类(一句话, 去重功能相关的工具找它就对了. 当前包括 参数配置, 去重功能实现)
+ * @function 去重服务控制中心
  * @Author hcc
  */
 @Service
@@ -19,6 +19,9 @@ public class DeduplicationHolder {
      */
     private Map<Integer,Builder> buildHolder = new HashMap<>(4);
 
+    /**
+     * 具体的去重接口
+     */
     private Map<Integer, DeduplicationService> serviceHolder = new HashMap<>(4);
 
     public Builder selectBuild(Integer key){

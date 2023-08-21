@@ -4,6 +4,7 @@ import com.austin.common.domain.TaskInfo;
 import com.austin.common.enums.DeduplicationType;
 import com.austin.common.enums.EnumUtil;
 import com.austin.handler.deduplication.service.DeduplicationService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.Objects;
  * @Author hcc
  */
 @Service
+@Slf4j
 public class DeduplicationRuleService {
 
     @Autowired
